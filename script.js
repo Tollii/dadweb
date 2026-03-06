@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Auto-update "years of experience" counters from founding year.
+  var experienceCounters = document.querySelectorAll('.trust-number[data-start-year]');
+  experienceCounters.forEach(function (counter) {
+    var startYear = parseInt(counter.getAttribute('data-start-year'), 10);
+    if (!Number.isFinite(startYear)) {
+      return;
+    }
+
+    var currentYear = new Date().getFullYear();
+    var years = Math.max(0, currentYear - startYear);
+    counter.textContent = years + '+';
+  });
+
   const header = document.querySelector('.site-header');
   const hamburger = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('.mobile-nav');
