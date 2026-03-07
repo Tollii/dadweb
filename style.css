@@ -1315,6 +1315,22 @@ img {
 
 /* ─── Responsive: Desktop (1024px+) ─── */
 @media (min-width: 1024px) {
+	.hero {
+		min-height: calc(82.5svh - var(--header-height));
+	}
+
+	.hero-content {
+		padding: 1.35rem 1.5rem 1.05rem;
+	}
+
+	.trust-bar {
+		padding: 1.45rem 0 0.85rem;
+	}
+
+	.recognition-band {
+		padding-top: 0.7rem;
+	}
+
 	.nav-links {
 		display: flex;
 	}
