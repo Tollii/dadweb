@@ -1365,4 +1365,110 @@ img {
 	.top-contact-bar {
 		display: none;
 	}
+
+	.service-card {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.service-card.is-collapsible {
+		padding-bottom: 1.15rem;
+	}
+
+	.service-card.is-collapsible::after {
+		content: '+';
+		position: absolute;
+		right: 1.1rem;
+		top: 1.15rem;
+		width: 28px;
+		height: 28px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 999px;
+		background: rgba(167, 42, 48, 0.08);
+		color: var(--cmlcolor);
+		font-size: 1.15rem;
+		font-weight: 500;
+		line-height: 1;
+		transition: transform var(--transition), background var(--transition);
+	}
+
+	.service-card.is-collapsible h3 {
+		padding-right: 2.5rem;
+	}
+
+	.service-card.is-collapsible .service-details {
+		max-height: 0;
+		overflow: hidden;
+		padding-top: 0;
+		margin-top: 0;
+		border-top-color: transparent;
+		transition: max-height 0.35s ease, padding-top 0.35s ease, margin-top 0.35s ease, border-color 0.35s ease;
+	}
+
+	.service-card.is-collapsible.is-open::after {
+		content: '-';
+		transform: scale(1.05);
+		background: rgba(167, 42, 48, 0.12);
+	}
+
+	.service-card.is-collapsible.is-open .service-details {
+		max-height: 48rem;
+		padding-top: 0.75rem;
+		margin-top: 0.25rem;
+		border-top-color: var(--border-subtle);
+	}
+
+	.intl-card {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.intl-card.is-collapsible {
+		padding-bottom: 1.15rem;
+	}
+
+	.intl-card.is-collapsible::after {
+		content: '+';
+		position: absolute;
+		right: 1.1rem;
+		top: 1.15rem;
+		width: 28px;
+		height: 28px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 999px;
+		background: rgba(200, 164, 94, 0.12);
+		color: var(--gold);
+		font-size: 1.15rem;
+		font-weight: 500;
+		line-height: 1;
+		transition: transform var(--transition), background var(--transition);
+	}
+
+	.intl-card.is-collapsible h3 {
+		padding-right: 2.5rem;
+	}
+
+	.intl-card.is-collapsible ul {
+		max-height: 0;
+		overflow: hidden;
+		padding-top: 0;
+		margin-top: 0;
+		transition: max-height 0.35s ease, padding-top 0.35s ease, margin-top 0.35s ease;
+	}
+
+	.intl-card.is-collapsible.is-open::after {
+		content: '-';
+		transform: scale(1.05);
+		background: rgba(200, 164, 94, 0.18);
+	}
+
+	.intl-card.is-collapsible.is-open ul {
+		max-height: 40rem;
+		padding-top: 0.25rem;
+		margin-top: 0.25rem;
+	}
 }

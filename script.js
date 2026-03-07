@@ -44,6 +44,72 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Scroll-triggered animations
   var animatedElements = document.querySelectorAll('.animate-on-scroll');
+  var serviceCards = document.querySelectorAll('.service-card');
+  var intlCards = document.querySelectorAll('.intl-card');
+
+  function setCollapsibleMode(cards) {
+    var isSmallScreen = window.matchMedia('(max-width: 767px)').matches;
+
+    cards.forEach(function (card) {
+      if (isSmallScreen) {
+        card.classList.add('is-collapsible');
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        if (!card.classList.contains('is-open')) {
+          card.setAttribute('aria-expanded', 'false');
+        }
+      } else {
+        card.classList.remove('is-collapsible', 'is-open');
+        card.removeAttribute('role');
+        card.removeAttribute('tabindex');
+        card.removeAttribute('aria-expanded');
+      }
+    });
+  }
+
+  function toggleCard(card, cards) {
+    if (!card.classList.contains('is-collapsible')) {
+      return;
+    }
+
+    var willOpen = !card.classList.contains('is-open');
+
+    cards.forEach(function (otherCard) {
+      otherCard.classList.remove('is-open');
+      otherCard.setAttribute('aria-expanded', 'false');
+    });
+
+    if (willOpen) {
+      card.classList.add('is-open');
+      card.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function bindCollapsibleCards(cards) {
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        toggleCard(card, cards);
+      });
+
+      card.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleCard(card, cards);
+        }
+      });
+    });
+  }
+
+  bindCollapsibleCards(serviceCards);
+  bindCollapsibleCards(intlCards);
+
+  function syncCollapsibleCards() {
+    setCollapsibleMode(serviceCards);
+    setCollapsibleMode(intlCards);
+  }
+
+  syncCollapsibleCards();
+  window.addEventListener('resize', syncCollapsibleCards, { passive: true });
 
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(
