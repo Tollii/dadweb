@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
+
   // Auto-update "years of experience" counters from founding year.
   var experienceCounters = document.querySelectorAll('.trust-number[data-start-year]');
   experienceCounters.forEach(function (counter) {
