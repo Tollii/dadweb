@@ -360,7 +360,7 @@ img {
 .hero-bg {
 	position: absolute;
 	inset: 0;
-	background-image: url("background.jpg");
+	background-image: url("resources/hero_background.jpg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
